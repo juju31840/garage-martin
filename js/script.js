@@ -8,16 +8,82 @@
     var track = carousel.querySelector(".carousel-track");
     var prevBtn = carousel.querySelector("[data-carousel-prev]");
     var nextBtn = carousel.querySelector("[data-carousel-next]");
+    var dotsWrap = carousel.querySelector("[data-carousel-dots]");
     if (!track) return;
 
-    function scrollByCard(direction) {
-      var card = track.querySelector(".carousel-card, .press-card, .testimonial-card");
-      var amount = card ? card.getBoundingClientRect().width + 20 : 300;
-      track.scrollBy({ left: direction * amount, behavior: "smooth" });
+    function items() {
+      return track.querySelectorAll(".carousel-card, .press-card");
     }
 
-    if (prevBtn) prevBtn.addEventListener("click", function () { scrollByCard(-1); });
-    if (nextBtn) nextBtn.addEventListener("click", function () { scrollByCard(1); });
+    function itemWidth() {
+      var item = items()[0];
+      return item ? item.getBoundingClientRect().width + 20 : track.clientWidth;
+    }
+
+    function pageCount() {
+      var perPage = Math.max(1, Math.round(track.clientWidth / itemWidth()));
+      return Math.max(1, Math.ceil(items().length / perPage));
+    }
+
+    function currentPage() {
+      var pages = pageCount();
+      var maxScroll = track.scrollWidth - track.clientWidth;
+      if (maxScroll <= 0) return 0;
+      return Math.round((track.scrollLeft / maxScroll) * (pages - 1));
+    }
+
+    function updateDots() {
+      if (!dotsWrap) return;
+      var active = currentPage();
+      dotsWrap.querySelectorAll(".carousel-dot").forEach(function (dot, i) {
+        dot.classList.toggle("is-active", i === active);
+      });
+    }
+
+    function buildDots() {
+      if (!dotsWrap) return;
+      var pages = pageCount();
+      dotsWrap.innerHTML = "";
+      for (var i = 0; i < pages; i++) {
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "carousel-dot";
+        dot.setAttribute("aria-label", "Page " + (i + 1));
+        (function (index) {
+          dot.addEventListener("click", function () {
+            var maxScroll = track.scrollWidth - track.clientWidth;
+            var target = pages > 1 ? (maxScroll * index) / (pages - 1) : 0;
+            track.scrollTo({ left: target, behavior: "smooth" });
+          });
+        })(i);
+        dotsWrap.appendChild(dot);
+      }
+      updateDots();
+    }
+
+    function scrollByPage(direction) {
+      track.scrollBy({ left: direction * track.clientWidth, behavior: "smooth" });
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", function () { scrollByPage(-1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { scrollByPage(1); });
+
+    var scrollTicking = false;
+    track.addEventListener(
+      "scroll",
+      function () {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        window.requestAnimationFrame(function () {
+          updateDots();
+          scrollTicking = false;
+        });
+      },
+      { passive: true }
+    );
+
+    buildDots();
+    window.addEventListener("resize", buildDots);
   });
 
   var navToggle = document.getElementById("navToggle");
