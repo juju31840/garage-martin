@@ -4,6 +4,22 @@
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+  document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
+    var track = carousel.querySelector(".carousel-track");
+    var prevBtn = carousel.querySelector("[data-carousel-prev]");
+    var nextBtn = carousel.querySelector("[data-carousel-next]");
+    if (!track) return;
+
+    function scrollByCard(direction) {
+      var card = track.querySelector(".carousel-card, .press-card, .testimonial-card");
+      var amount = card ? card.getBoundingClientRect().width + 20 : 300;
+      track.scrollBy({ left: direction * amount, behavior: "smooth" });
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", function () { scrollByCard(-1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { scrollByCard(1); });
+  });
+
   var navToggle = document.getElementById("navToggle");
   var primaryNav = document.getElementById("primaryNav");
 
