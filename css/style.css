@@ -461,14 +461,10 @@ p {
 
 .carousel-track {
   display: flex;
-  gap: 1.25rem;
+  gap: 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-bottom: 0.5rem;
   scrollbar-width: none;
-  margin: 0 -1.25rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -477,24 +473,17 @@ p {
 
 .carousel-card {
   position: relative;
-  flex: 0 0 78%;
+  flex: 0 0 84%;
   scroll-snap-align: start;
-  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
 }
 
 .carousel-card img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
   transition: transform 0.7s ease;
-}
-
-.carousel-card--square img {
-  aspect-ratio: 1 / 1;
-  object-position: center 42%;
 }
 
 .carousel-card:hover img,
@@ -580,13 +569,13 @@ p {
 
 @media (min-width: 640px) {
   .carousel-card {
-    flex-basis: 55%;
+    flex-basis: 42%;
   }
 }
 
 @media (min-width: 1000px) {
   .carousel-card {
-    flex-basis: 31%;
+    flex-basis: 25%;
   }
 }
 
