@@ -487,11 +487,12 @@ p {
 
 .carousel-card-media {
   overflow: hidden;
+  height: 200px;
 }
 
 .carousel-card-media img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.7s ease;
@@ -591,11 +592,19 @@ p {
   .carousel-card {
     flex-basis: 46%;
   }
+
+  .carousel-card-media {
+    height: 230px;
+  }
 }
 
 @media (min-width: 1000px) {
   .carousel-card {
     flex-basis: 31%;
+  }
+
+  .carousel-card-media {
+    height: 260px;
   }
 }
 
@@ -726,11 +735,12 @@ p {
 .press-card-media {
   position: relative;
   overflow: hidden;
+  height: 200px;
 }
 
 .press-card-media img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.7s ease;
@@ -777,11 +787,19 @@ p {
   .press-card {
     flex-basis: 46%;
   }
+
+  .press-card-media {
+    height: 230px;
+  }
 }
 
 @media (min-width: 1000px) {
   .press-card {
     flex-basis: 31%;
+  }
+
+  .press-card-media {
+    height: 260px;
   }
 }
 
