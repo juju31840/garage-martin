@@ -492,6 +492,11 @@ p {
   transition: transform 0.7s ease;
 }
 
+.carousel-card--square img {
+  aspect-ratio: 1 / 1;
+  object-position: center 42%;
+}
+
 .carousel-card:hover img,
 .carousel-card:focus-within img {
   transform: scale(1.08);
