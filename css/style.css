@@ -461,6 +461,7 @@ p {
 
 .carousel-track {
   display: flex;
+  align-items: flex-start;
   gap: 1.25rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -502,10 +503,9 @@ p {
 }
 
 .carousel-caption {
-  padding: 1.5rem 1.5rem 1.75rem;
+  padding: 1.1rem 1.25rem 1.25rem;
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
 .carousel-label {
@@ -755,8 +755,7 @@ p {
 }
 
 .press-card-body {
-  flex: 1;
-  padding: 1.5rem 1.5rem 1.75rem;
+  padding: 1.1rem 1.25rem 1.25rem;
 }
 
 .press-card-quote {
