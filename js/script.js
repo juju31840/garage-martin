@@ -1,6 +1,9 @@
 (function () {
   "use strict";
 
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
   var navToggle = document.getElementById("navToggle");
   var primaryNav = document.getElementById("primaryNav");
 
@@ -20,10 +23,10 @@
     });
   }
 
-  var form = document.getElementById("contactForm");
-  var feedback = document.getElementById("formFeedback");
+  function setupContactForm(form) {
+    var feedback = form.querySelector(".form-feedback");
+    if (!feedback) return;
 
-  if (form && feedback) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -41,5 +44,95 @@
       feedback.className = "form-feedback success";
       form.reset();
     });
+  }
+
+  document.querySelectorAll(".contact-form").forEach(setupContactForm);
+
+  var rdvModal = document.getElementById("rdvModal");
+  if (rdvModal) {
+    document.querySelectorAll("[data-open-rdv]").forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        rdvModal.showModal();
+      });
+    });
+
+    rdvModal.querySelectorAll("[data-close-rdv]").forEach(function (closer) {
+      closer.addEventListener("click", function () {
+        rdvModal.close();
+      });
+    });
+
+    rdvModal.addEventListener("click", function (event) {
+      if (event.target === rdvModal) {
+        rdvModal.close();
+      }
+    });
+
+    rdvModal.addEventListener("close", function () {
+      var feedback = rdvModal.querySelector(".form-feedback");
+      if (feedback) {
+        feedback.textContent = "";
+        feedback.className = "form-feedback";
+      }
+    });
+  }
+
+  if (!prefersReducedMotion && "IntersectionObserver" in window) {
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
+  if (canHover && !prefersReducedMotion) {
+    document.querySelectorAll(".tilt").forEach(function (el) {
+      el.addEventListener("mousemove", function (event) {
+        var rect = el.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width - 0.5;
+        var y = (event.clientY - rect.top) / rect.height - 0.5;
+        var rotateX = (-y * 8).toFixed(2);
+        var rotateY = (x * 8).toFixed(2);
+        el.style.transform =
+          "perspective(700px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) translateY(-4px)";
+      });
+
+      el.addEventListener("mouseleave", function () {
+        el.style.transform = "";
+      });
+    });
+  }
+
+  var heroVisual = document.querySelector(".hero-visual");
+  if (heroVisual && !prefersReducedMotion) {
+    var ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function () {
+          var offset = Math.min(window.scrollY * 0.08, 24);
+          heroVisual.style.transform = "translateY(" + offset.toFixed(1) + "px)";
+          ticking = false;
+        });
+      },
+      { passive: true }
+    );
   }
 })();

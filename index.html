@@ -47,7 +47,7 @@
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
               Appeler maintenant
             </a>
-            <a href="#contact" class="btn btn-outline">Prendre rendez-vous</a>
+            <button type="button" class="btn btn-outline" data-open-rdv>Prendre rendez-vous</button>
           </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
@@ -69,49 +69,49 @@
         <p class="section-intro">Un atelier équipé pour l'entretien courant comme les réparations plus techniques.</p>
         <div class="cards-grid">
 
-          <article class="card">
+          <article class="card reveal tilt">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.5 4.5H18l-3.5 3 1.5 4.5-4-2.8-4 2.8 1.5-4.5L6 6.5h4.5z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-7 6-11z"/><circle class="icon-dot" cx="12" cy="15.5" r="1.4"/></svg>
             </div>
             <h3>Vidange</h3>
             <p>Vidange huile et filtre, contrôle des niveaux, réinitialisation de l'indicateur d'entretien.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal tilt">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" class="hero-window"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4" width="13" height="16" rx="2"/><rect class="icon-dot" x="9" y="3" width="6" height="2.2" rx="1"/><path d="M8.5 12.5l2.2 2.2L16 10"/></svg>
             </div>
             <h3>Révision</h3>
             <p>Révision complète selon le carnet constructeur, freins, filtres, courroies et points de sécurité.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal tilt">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5" class="hero-window"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.3"/><circle class="icon-dot" cx="12" cy="12" r="2"/><path d="M12 3.7v3M12 17.3v3M3.7 12h3M17.3 12h3M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M17.7 6.3l-2.1 2.1M8.4 15.6l-2.1 2.1"/></svg>
             </div>
             <h3>Pneus</h3>
             <p>Montage, équilibrage, permutation et conseil pour choisir les pneus adaptés à votre véhicule.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal tilt">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h4l2-6h4l2 6h4M4 12v4h16v-4"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15.5a8 8 0 1 1 16 0"/><path d="M12 15.5l4.2-5.2"/><circle class="icon-dot" cx="12" cy="15.5" r="1.3"/></svg>
             </div>
             <h3>Diagnostic</h3>
             <p>Diagnostic électronique et mécanique pour identifier rapidement l'origine d'une panne ou d'un voyant allumé.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal tilt">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M4 10h16"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 16.5v-2.2l1.8-3.6a2 2 0 0 1 1.8-1.1h9.8a2 2 0 0 1 1.8 1.1l1.8 3.6v2.2"/><path d="M3.5 16.5h17"/><circle class="icon-dot" cx="7.5" cy="17.8" r="1.5"/><circle class="icon-dot" cx="16.5" cy="17.8" r="1.5"/></svg>
             </div>
             <h3>Carrosserie</h3>
             <p>Réparation de bosses, débosselage, retouche peinture et remise en état après un choc léger.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal tilt">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle class="icon-dot" cx="12" cy="12" r="1.6"/><path d="M12 6.3v2M12 15.7v2M6.3 12h2M15.7 12h2"/><path d="M16.3 7.7a6.2 6.2 0 0 1 0 8.6" class="icon-thick"/></svg>
             </div>
             <h3>Freinage</h3>
             <p>Contrôle et remplacement des plaquettes, disques et liquide de frein pour votre sécurité.</p>
@@ -123,14 +123,14 @@
 
     <section id="a-propos" class="section a-propos">
       <div class="container a-propos-inner">
-        <div class="a-propos-visual" aria-hidden="true">
+        <div class="a-propos-visual reveal" aria-hidden="true">
           <svg viewBox="0 0 160 160" class="portrait-illustration">
             <circle cx="80" cy="80" r="78"/>
             <circle cx="80" cy="62" r="28" class="hero-window"/>
             <path d="M30 145c5-30 25-48 50-48s45 18 50 48" class="hero-window"/>
           </svg>
         </div>
-        <div class="a-propos-text">
+        <div class="a-propos-text reveal">
           <h2>Philippe Martin, artisan mécanicien</h2>
           <p>Installé à Lyon depuis plus de 20 ans, je mets mon expérience au service de tous les automobilistes du quartier. Chaque véhicule est pris en charge avec le même sérieux, que ce soit pour un simple contrôle ou une réparation plus complexe.</p>
           <ul class="badges">
@@ -148,25 +148,25 @@
         <h2>Ce que disent nos clients</h2>
         <div class="cards-grid testimonials-grid">
 
-          <blockquote class="testimonial">
+          <blockquote class="testimonial reveal">
             <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
             <p>"Toujours un accueil sympathique et un travail sérieux. Le devis était clair et respecté."</p>
             <cite>— Nadia B.</cite>
           </blockquote>
 
-          <blockquote class="testimonial">
+          <blockquote class="testimonial reveal">
             <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
             <p>"Diagnostic rapide sur un problème que deux autres garages n'avaient pas su expliquer. Je recommande."</p>
             <cite>— Karim L.</cite>
           </blockquote>
 
-          <blockquote class="testimonial">
+          <blockquote class="testimonial reveal">
             <div class="stars" aria-label="4 étoiles sur 5">★★★★☆</div>
             <p>"Bon rapport qualité-prix pour la révision annuelle. Rendez-vous obtenu rapidement."</p>
             <cite>— Sophie D.</cite>
           </blockquote>
 
-          <blockquote class="testimonial">
+          <blockquote class="testimonial reveal">
             <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
             <p>"Garage de quartier comme on n'en trouve plus assez. Honnête et compétent."</p>
             <cite>— Marc T.</cite>
@@ -178,7 +178,7 @@
 
     <section id="infos" class="section infos">
       <div class="container infos-inner">
-        <div class="infos-text">
+        <div class="infos-text reveal">
           <h2>Horaires &amp; accès</h2>
           <table class="hours-table">
             <tbody>
@@ -196,7 +196,7 @@
             04 78 12 34 56
           </a>
         </div>
-        <div class="infos-map">
+        <div class="infos-map reveal">
           <iframe
             title="Localisation du Garage Martin"
             src="https://www.google.com/maps?q=12+Rue+de+la+R%C3%A9publique,+69003+Lyon&output=embed"
@@ -209,11 +209,11 @@
 
     <section id="contact" class="section contact">
       <div class="container contact-inner">
-        <div class="contact-text">
+        <div class="contact-text reveal">
           <h2>Nous contacter</h2>
           <p>Une question, une demande de devis ou de rendez-vous ? Laissez-nous un message, nous vous répondons rapidement.</p>
         </div>
-        <form class="contact-form" id="contactForm" novalidate>
+        <form class="contact-form reveal" id="contactForm" novalidate>
           <div class="form-field">
             <label for="name">Nom</label>
             <input type="text" id="name" name="name" required autocomplete="name">
@@ -247,6 +247,38 @@
       <p class="footer-copy">&copy; 2026 Garage Martin. Tous droits réservés.</p>
     </div>
   </footer>
+
+  <div class="mobile-actions">
+    <a href="tel:+33478123456" class="btn btn-call">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      Appeler
+    </a>
+    <button type="button" class="btn btn-outline" data-open-rdv>Rendez-vous</button>
+  </div>
+
+  <dialog id="rdvModal" class="rdv-modal" aria-labelledby="rdvModalTitle">
+    <form class="contact-form" id="rdvForm" novalidate>
+      <div class="rdv-modal-header">
+        <h2 id="rdvModalTitle">Prendre rendez-vous</h2>
+        <button type="button" class="rdv-close" data-close-rdv aria-label="Fermer la fenêtre">&times;</button>
+      </div>
+      <p>Laissez-nous vos coordonnées, on vous rappelle pour caler un créneau.</p>
+      <div class="form-field">
+        <label for="name-modal">Nom</label>
+        <input type="text" id="name-modal" name="name" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="phone-modal">Téléphone</label>
+        <input type="tel" id="phone-modal" name="phone" required autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="message-modal">Message</label>
+        <textarea id="message-modal" name="message" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-call">Envoyer la demande</button>
+      <p class="form-feedback" id="rdvFormFeedback" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
 
   <script src="js/script.js"></script>
 </body>
