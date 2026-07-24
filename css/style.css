@@ -1,10 +1,28 @@
 /* ---------- Fonts (self-hosted, latin subset) ---------- */
 @font-face {
-  font-family: "Fraunces";
+  font-family: "Archivo";
   font-style: normal;
-  font-weight: 300 900;
+  font-weight: 100 900;
   font-display: swap;
-  src: url("../assets/fonts/fraunces-variable.woff2") format("woff2");
+  src: url("../assets/fonts/archivo-variable.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/space-mono-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/space-mono-700.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
 }
 
@@ -19,19 +37,21 @@
 
 /* ---------- Base ---------- */
 :root {
-  --color-bg: #f6f3ee;
-  --color-surface: #ffffff;
-  --color-text: #2a2f36;
-  --color-text-muted: #5c6670;
-  --color-primary: #1f3140;
-  --color-primary-dark: #16232e;
-  --color-accent: #b2542c;
-  --color-accent-dark: #8f4322;
-  --color-border: #e2ddd3;
-  --radius: 10px;
+  --color-bg: #efe6cd;
+  --color-surface: #fffefa;
+  --color-text: #211f18;
+  --color-text-muted: #6b6558;
+  --color-primary: #34371f;
+  --color-primary-dark: #232516;
+  --color-accent: #e8621f;
+  --color-accent-dark: #c74f15;
+  --color-ink: #1a1812;
+  --color-border: #ddd0a8;
+  --radius: 4px;
   --max-width: 1140px;
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-display: "Archivo", "Arial Narrow", Arial, sans-serif;
   --font-base: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
   --shadow-sm: 0 1px 2px rgba(22, 24, 28, 0.07), 0 1px 1px rgba(22, 24, 28, 0.04);
   --shadow-md: 0 10px 24px -8px rgba(22, 24, 28, 0.2), 0 2px 8px rgba(22, 24, 28, 0.08);
   --shadow-lg: 0 24px 48px -14px rgba(22, 24, 28, 0.32), 0 6px 16px rgba(22, 24, 28, 0.12);
@@ -64,20 +84,21 @@ a {
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.15;
+  font-weight: 800;
+  line-height: 1.05;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
   color: var(--color-primary);
   margin: 0 0 0.6em;
 }
 
 h1 {
-  font-size: 2.1rem;
-  font-weight: 650;
+  font-size: 2.3rem;
+  font-weight: 800;
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   position: relative;
   padding-top: 0.9rem;
 }
@@ -153,7 +174,7 @@ p {
     transition: box-shadow 0.35s ease !important;
   }
 
-  .hero-visual {
+  .hero-media img {
     transform: none !important;
   }
 }
@@ -165,12 +186,14 @@ p {
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
   border-radius: var(--radius);
-  font-family: inherit;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.85rem;
   text-decoration: none;
   border: 2px solid transparent;
   cursor: pointer;
-  font-size: 1rem;
   white-space: nowrap;
   transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.2s ease,
     color 0.2s ease, border-color 0.2s ease;
@@ -236,7 +259,8 @@ p {
   font-family: var(--font-display);
   color: #fff;
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 800;
+  text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.01em;
 }
@@ -307,6 +331,11 @@ p {
   padding: 0.75rem 0.25rem;
   color: #fff;
   text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .primary-nav a:hover,
@@ -316,19 +345,55 @@ p {
 
 /* ---------- Hero ---------- */
 .hero {
-  background: var(--color-primary);
+  position: relative;
   color: #fff;
-  padding: 2.5rem 0;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 24, 18, 0.55) 0%, rgba(26, 24, 18, 0.35) 45%, rgba(26, 24, 18, 0.8) 100%);
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  padding: 5rem 0;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
 }
 
 .hero h1 {
   color: #fff;
+  max-width: 20ch;
+  text-transform: none;
 }
 
 .hero-tagline {
@@ -340,6 +405,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .hero-actions .btn-outline {
@@ -351,23 +417,6 @@ p {
 .hero-actions .btn-outline:focus-visible {
   background: #fff;
   color: var(--color-primary);
-}
-
-.hero-visual {
-  align-self: center;
-  width: 100%;
-  max-width: 320px;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
-}
-
-.hero-illustration path,
-.hero-illustration rect,
-.hero-illustration circle {
-  fill: var(--color-accent);
-}
-
-.hero-illustration .hero-window {
-  fill: var(--color-primary-dark);
 }
 
 /* ---------- Cards / Prestations ---------- */
@@ -396,7 +445,7 @@ p {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(178, 84, 44, 0.12);
+  background: rgba(232, 98, 31, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -443,31 +492,26 @@ p {
 .a-propos-visual {
   position: relative;
   width: 100%;
-  max-width: 220px;
+  max-width: 320px;
 }
 
 .a-propos-visual::before {
   content: "";
   position: absolute;
   inset: 10% -10% -10% 10%;
-  background: rgba(178, 84, 44, 0.1);
+  background: rgba(232, 98, 31, 0.15);
   border-radius: 32% 68% 60% 40% / 45% 35% 65% 55%;
   z-index: 0;
 }
 
-.portrait-illustration {
+.a-propos-visual img {
   position: relative;
   z-index: 1;
-}
-
-.portrait-illustration circle:first-child {
-  fill: var(--color-primary);
-}
-
-.portrait-illustration .hero-window {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 3;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
 }
 
 .badges {
@@ -480,12 +524,13 @@ p {
 }
 
 .badges li {
-  background: rgba(31, 49, 64, 0.08);
+  background: rgba(52, 55, 31, 0.08);
   color: var(--color-primary);
   padding: 0.4rem 0.85rem;
   border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 /* ---------- Avis ---------- */
@@ -522,6 +567,64 @@ p {
   color: var(--color-text-muted);
 }
 
+/* ---------- Atelier (collage) ---------- */
+.atelier {
+  background: var(--color-primary);
+}
+
+.atelier h2 {
+  color: #fff;
+}
+
+.atelier h2::before {
+  background: var(--color-accent);
+}
+
+.atelier-collage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.atelier-collage figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.atelier-collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.collage-tall {
+  aspect-ratio: 3 / 4;
+}
+
+.collage-wide {
+  aspect-ratio: 4 / 3;
+}
+
+.atelier-collage figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-ink);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.75rem 1rem;
+}
+
 /* ---------- Infos (horaires / carte) ---------- */
 .infos {
   background: var(--color-surface);
@@ -545,12 +648,14 @@ p {
   text-align: left;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
   font-weight: 400;
 }
 
 .hours-table th {
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: 700;
   padding-right: 1rem;
 }
 
@@ -598,8 +703,11 @@ address {
 }
 
 .form-field label {
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .form-field input,
@@ -666,7 +774,8 @@ address {
 
 .footer-copy {
   margin: 0;
-  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -691,8 +800,17 @@ address {
     align-items: flex-start;
   }
 
+  .atelier-collage {
+    grid-template-columns: 1fr 1.4fr;
+    align-items: start;
+  }
+
+  .collage-tall {
+    aspect-ratio: 3 / 4.4;
+  }
+
   .a-propos-visual {
-    flex: 0 0 220px;
+    flex: 0 0 300px;
     margin-top: -1.5rem;
   }
 
@@ -751,22 +869,6 @@ address {
   .header-call {
     display: inline-flex;
     order: 4;
-  }
-
-  .hero-inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .hero-text {
-    flex: 1;
-    max-width: 55ch;
-  }
-
-  .hero-visual {
-    flex: 0 0 340px;
-    max-width: 340px;
   }
 
   .cards-grid {
@@ -849,5 +951,5 @@ address {
 .rdv-close:hover,
 .rdv-close:focus-visible {
   color: var(--color-primary);
-  background: rgba(31, 49, 64, 0.08);
+  background: rgba(52, 55, 31, 0.08);
 }

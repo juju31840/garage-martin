@@ -117,8 +117,8 @@
     });
   }
 
-  var heroVisual = document.querySelector(".hero-visual");
-  if (heroVisual && !prefersReducedMotion) {
+  var heroImage = document.querySelector(".hero-media img");
+  if (heroImage && !prefersReducedMotion) {
     var ticking = false;
 
     window.addEventListener(
@@ -127,8 +127,8 @@
         if (ticking) return;
         ticking = true;
         window.requestAnimationFrame(function () {
-          var offset = Math.min(window.scrollY * 0.08, 24);
-          heroVisual.style.transform = "translateY(" + offset.toFixed(1) + "px)";
+          var offset = Math.min(window.scrollY * 0.15, 80);
+          heroImage.style.transform = "translateY(" + offset.toFixed(1) + "px) scale(1.08)";
           ticking = false;
         });
       },
