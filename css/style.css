@@ -628,32 +628,19 @@ p {
 .a-propos-inner {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  align-items: center;
+  gap: 1.75rem;
 }
 
 .a-propos-visual {
-  position: relative;
   width: 100%;
   max-width: 420px;
 }
 
-.a-propos-visual::before {
-  content: "";
-  position: absolute;
-  inset: 10% -10% -10% 10%;
-  background: rgba(232, 98, 31, 0.15);
-  border-radius: 32% 68% 60% 40% / 45% 35% 65% 55%;
-  z-index: 0;
-}
-
 .a-propos-visual img {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: var(--radius);
+  border-radius: 16px;
   box-shadow: var(--shadow-lg);
   transition: transform 0.7s ease;
 }
@@ -664,8 +651,6 @@ p {
 }
 
 .a-propos-text {
-  flex: 1;
-  min-width: 0;
   max-width: 60ch;
 }
 
@@ -1112,11 +1097,6 @@ address {
     font-size: 2rem;
   }
 
-  .a-propos-inner {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
   .atelier-collage {
     grid-template-columns: 1fr 1.4fr;
     align-items: start;
@@ -1124,11 +1104,6 @@ address {
 
   .collage-tall {
     aspect-ratio: 3 / 4.4;
-  }
-
-  .a-propos-visual {
-    flex: 0 0 400px;
-    margin-top: -1.5rem;
   }
 
   .infos-inner {
