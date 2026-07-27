@@ -123,6 +123,20 @@
         <input type="tel" id="phone-modal" name="phone" required autocomplete="tel">
       </div>
       <div class="form-field">
+        <label for="date-modal">Date souhaitée</label>
+        <input type="date" id="date-modal" name="date">
+      </div>
+      <div class="form-field">
+        <label for="slot-modal">Créneau souhaité</label>
+        <select id="slot-modal" name="slot">
+          <option value="">Peu importe</option>
+          <option value="8h-10h">8h &ndash; 10h</option>
+          <option value="10h-12h">10h &ndash; 12h</option>
+          <option value="14h-16h">14h &ndash; 16h</option>
+          <option value="16h-18h30">16h &ndash; 18h30</option>
+        </select>
+      </div>
+      <div class="form-field">
         <label for="message-modal">Message</label>
         <textarea id="message-modal" name="message" rows="3" required></textarea>
       </div>
