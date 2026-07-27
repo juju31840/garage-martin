@@ -1,57 +1,57 @@
 /* ---------- Fonts (self-hosted, latin subset) ---------- */
 @font-face {
-  font-family: "Archivo";
+  font-family: "Big Shoulders Display";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("../assets/fonts/archivo-variable.woff2") format("woff2");
+  src: url("../assets/fonts/big-shoulders-display-variable.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
 }
 
 @font-face {
-  font-family: "Space Mono";
+  font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../assets/fonts/space-mono-400.woff2") format("woff2");
+  src: url("../assets/fonts/ibm-plex-mono-400.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
 }
 
 @font-face {
-  font-family: "Space Mono";
+  font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../assets/fonts/space-mono-700.woff2") format("woff2");
+  src: url("../assets/fonts/ibm-plex-mono-700.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
 }
 
 @font-face {
-  font-family: "Inter";
+  font-family: "Work Sans";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("../assets/fonts/inter-variable.woff2") format("woff2");
+  src: url("../assets/fonts/work-sans-variable.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
 }
 
 /* ---------- Base ---------- */
 :root {
-  --color-bg: #efe6cd;
-  --color-surface: #fffefa;
-  --color-text: #211f18;
-  --color-text-muted: #6b6558;
-  --color-primary: #34371f;
-  --color-primary-dark: #232516;
-  --color-accent: #e8621f;
-  --color-accent-dark: #c74f15;
-  --color-ink: #1a1812;
-  --color-border: #ddd0a8;
+  --color-bg: #ede6d8;
+  --color-surface: #f8f4ea;
+  --color-text: #23201b;
+  --color-text-muted: #6b6459;
+  --color-primary: #223142;
+  --color-primary-dark: #16212c;
+  --color-accent: #d1682f;
+  --color-accent-dark: #b3551f;
+  --color-ink: #1c1712;
+  --color-border: #ddd2ba;
   --radius: 4px;
   --max-width: 1140px;
-  --font-display: "Archivo", "Arial Narrow", Arial, sans-serif;
-  --font-base: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "Space Mono", "Courier New", monospace;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Arial, sans-serif;
+  --font-base: "Work Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
   --shadow-sm: 0 1px 2px rgba(22, 24, 28, 0.07), 0 1px 1px rgba(22, 24, 28, 0.04);
   --shadow-md: 0 10px 24px -8px rgba(22, 24, 28, 0.2), 0 2px 8px rgba(22, 24, 28, 0.08);
   --shadow-lg: 0 24px 48px -14px rgba(22, 24, 28, 0.32), 0 6px 16px rgba(22, 24, 28, 0.12);
@@ -209,7 +209,7 @@ p {
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
   border-radius: var(--radius);
-  font-family: var(--font-display);
+  font-family: var(--font-base);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
