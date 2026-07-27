@@ -43,9 +43,9 @@
   --color-text-muted: #6b6459;
   --color-primary: #223142;
   --color-primary-dark: #16212c;
-  --color-accent: #d1682f;
-  --color-accent-dark: #b3551f;
-  --color-accent-on-dark: #eb9455;
+  --color-accent: #2e86c1;
+  --color-accent-dark: #164a68;
+  --color-accent-on-dark: #7fb8dd;
   --color-ink: #1c1712;
   --color-border: #ddd2ba;
   --radius: 4px;
@@ -79,7 +79,7 @@ body {
   top: -3rem;
   left: 0.75rem;
   z-index: 100;
-  background: var(--color-accent);
+  background: var(--color-accent-dark);
   color: #fff;
   padding: 0.65rem 1.1rem;
   border-radius: var(--radius);
