@@ -283,6 +283,48 @@
     });
   }
 
+  var actsWrap = document.getElementById("actsWrap");
+  var actsRail = document.querySelector(".acts-rail");
+  if (actsWrap && actsRail) {
+    var railButtons = actsRail.querySelectorAll("button");
+
+    railButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var target = document.getElementById(btn.getAttribute("data-act-target"));
+        if (target) target.scrollIntoView({ block: "start" });
+      });
+    });
+
+    if ("IntersectionObserver" in window) {
+      var actObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.id;
+              railButtons.forEach(function (btn) {
+                btn.classList.toggle("is-active", btn.getAttribute("data-act-target") === id);
+              });
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      actsWrap.querySelectorAll(".act").forEach(function (act) {
+        actObserver.observe(act);
+      });
+
+      var railVisibilityObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            actsRail.classList.toggle("is-visible", entry.isIntersecting);
+          });
+        },
+        { threshold: 0.05 }
+      );
+      railVisibilityObserver.observe(actsWrap);
+    }
+  }
+
   if (canHover && !prefersReducedMotion) {
     document.querySelectorAll(".tilt").forEach(function (el) {
       el.addEventListener("mousemove", function (event) {
