@@ -45,6 +45,7 @@
   --color-primary-dark: #16212c;
   --color-accent: #d1682f;
   --color-accent-dark: #b3551f;
+  --color-accent-on-dark: #eb9455;
   --color-ink: #1c1712;
   --color-border: #ddd2ba;
   --radius: 4px;
@@ -71,6 +72,26 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.55;
+}
+
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.75rem;
+  z-index: 100;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-base);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
 }
 
 img, svg {
@@ -235,13 +256,8 @@ p {
 }
 
 .btn-call {
-  background: var(--color-accent);
-  color: #fff;
-}
-
-.btn-call:hover,
-.btn-call:focus-visible {
   background: var(--color-accent-dark);
+  color: #fff;
 }
 
 .btn-outline {
@@ -407,7 +423,7 @@ p {
 .sidebar-nav a:hover,
 .sidebar-nav a:focus-visible,
 .sidebar-nav a.is-active {
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
 }
 
 .sidebar-nav-toggle {
@@ -429,7 +445,7 @@ p {
 
 .sidebar-nav-toggle:hover,
 .sidebar-nav-toggle:focus-visible {
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
 }
 
 .chevron {
@@ -994,6 +1010,57 @@ p {
   padding: 0.75rem 1rem;
 }
 
+/* ---------- FAQ ---------- */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.25rem 1.25rem;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  flex: none;
+}
+
+.faq-item[open] summary::after {
+  content: "\2212";
+}
+
+.faq-item p {
+  margin: 0 0 1.1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
 /* ---------- Infos (horaires / carte) ---------- */
 .infos {
   background: var(--color-surface);
@@ -1032,6 +1099,17 @@ address {
   font-style: normal;
   margin-bottom: 1.25rem;
   color: var(--color-text-muted);
+}
+
+.service-area {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  max-width: 420px;
+  margin: -0.5rem 0 1.25rem;
+}
+
+.service-area strong {
+  color: var(--color-text);
 }
 
 .infos-map {
@@ -1202,7 +1280,7 @@ address {
 
 .footer-social a:hover,
 .footer-social a:focus-visible {
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
 }
 
 .footer-copy {
@@ -1393,7 +1471,7 @@ address {
 }
 
 .legal-related a {
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -1416,7 +1494,7 @@ address {
 }
 
 .breadcrumb a:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .breadcrumb [aria-current="page"] {
@@ -1489,7 +1567,7 @@ address {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--color-accent);
+  color: var(--color-accent-dark);
   font-weight: 700;
 }
 
@@ -1527,7 +1605,7 @@ address {
 
 .price-table td {
   text-align: right;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -1576,7 +1654,7 @@ address {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 3px;
   margin-top: 0.5rem;
@@ -1593,7 +1671,7 @@ address {
 
 .see-more-link--dark:hover,
 .see-more-link--dark:focus-visible {
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
 }
 
 /* ---------- Avis page ---------- */
