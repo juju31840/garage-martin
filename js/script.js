@@ -86,23 +86,83 @@
     window.addEventListener("resize", buildDots);
   });
 
-  var navToggle = document.getElementById("navToggle");
-  var primaryNav = document.getElementById("primaryNav");
+  var sidebarToggle = document.getElementById("sidebarToggle");
+  var sidebar = document.getElementById("sidebar");
+  var sidebarBackdrop = document.getElementById("sidebarBackdrop");
 
-  if (navToggle && primaryNav) {
-    navToggle.addEventListener("click", function () {
-      var isOpen = primaryNav.classList.toggle("is-open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      navToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+  function closeSidebar() {
+    if (!sidebar) return;
+    sidebar.classList.remove("is-open");
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove("is-open");
+    if (sidebarToggle) {
+      sidebarToggle.setAttribute("aria-expanded", "false");
+      sidebarToggle.setAttribute("aria-label", "Ouvrir le menu");
+    }
+  }
+
+  function openSidebar() {
+    if (!sidebar) return;
+    sidebar.classList.add("is-open");
+    if (sidebarBackdrop) sidebarBackdrop.classList.add("is-open");
+    if (sidebarToggle) {
+      sidebarToggle.setAttribute("aria-expanded", "true");
+      sidebarToggle.setAttribute("aria-label", "Fermer le menu");
+    }
+  }
+
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener("click", function () {
+      if (sidebar.classList.contains("is-open")) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
     });
 
-    primaryNav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        primaryNav.classList.remove("is-open");
-        navToggle.setAttribute("aria-expanded", "false");
-        navToggle.setAttribute("aria-label", "Ouvrir le menu");
+    if (sidebarBackdrop) {
+      sidebarBackdrop.addEventListener("click", closeSidebar);
+    }
+
+    sidebar.querySelectorAll(".sidebar-nav a").forEach(function (link) {
+      link.addEventListener("click", closeSidebar);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeSidebar();
+    });
+  }
+
+  if (sidebar) {
+    sidebar.querySelectorAll("[data-subnav-toggle]").forEach(function (toggle) {
+      toggle.addEventListener("click", function () {
+        var isOpen = toggle.getAttribute("aria-expanded") === "true";
+        var subnavId = toggle.getAttribute("aria-controls");
+        var subnav = subnavId ? document.getElementById(subnavId) : null;
+        toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        if (subnav) subnav.classList.toggle("is-open", !isOpen);
       });
     });
+
+    var currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
+    var activeLink = null;
+
+    sidebar.querySelectorAll(".sidebar-nav a").forEach(function (link) {
+      if (link.hash) return;
+      var linkPath = link.pathname.replace(/\/index\.html$/, "/");
+      if (linkPath === currentPath) {
+        link.classList.add("is-active");
+        activeLink = link;
+      }
+    });
+
+    if (activeLink) {
+      var parentSubnav = activeLink.closest(".sidebar-subnav");
+      if (parentSubnav) {
+        parentSubnav.classList.add("is-open");
+        var parentToggle = document.querySelector('[aria-controls="' + parentSubnav.id + '"]');
+        if (parentToggle) parentToggle.setAttribute("aria-expanded", "true");
+      }
+    }
   }
 
   function setupContactForm(form) {
