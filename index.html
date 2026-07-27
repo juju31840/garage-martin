@@ -144,6 +144,35 @@
       </div>
     </section>
 
+    <section id="comment" class="section steps">
+      <div class="container">
+        <p class="eyebrow center">Simple et sans surprise</p>
+        <h2 class="steps-heading">Comment ça se passe</h2>
+        <div class="steps-list">
+          <div class="step reveal">
+            <span class="step-number">1</span>
+            <h3>Vous appelez ou réservez</h3>
+            <p>Par téléphone, WhatsApp ou le formulaire de rendez-vous en ligne.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-number">2</span>
+            <h3>On établit un diagnostic</h3>
+            <p>Contrôle du véhicule et identification précise du besoin.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-number">3</span>
+            <h3>Vous validez le devis</h3>
+            <p>Prix clair et détaillé, aucune intervention sans votre accord.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-number">4</span>
+            <h3>Vous récupérez votre véhicule</h3>
+            <p>Réparation soignée, avec explications et conseils pour la suite.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="prestations" class="section prestations">
       <div class="container">
         <p class="eyebrow center">Nos savoir-faire</p>
@@ -231,6 +260,41 @@
       </div>
     </section>
 
+    <section id="estimation" class="section estimator">
+      <div class="container">
+        <p class="eyebrow center">Une idée de budget</p>
+        <h2 class="estimator-heading">Estimez le prix de votre entretien</h2>
+        <p class="section-intro">Sélectionnez une prestation et le gabarit de votre véhicule pour une fourchette indicative. Le prix exact est toujours confirmé par un devis gratuit.</p>
+
+        <div class="estimator-tool">
+          <div class="estimator-field">
+            <label for="estimatorService">Prestation</label>
+            <select id="estimatorService">
+              <option value="vidange">Vidange</option>
+              <option value="revision">Révision complète</option>
+              <option value="pneus">Pneus (par pneu posé)</option>
+              <option value="diagnostic">Diagnostic électronique</option>
+              <option value="freinage">Freinage (train avant)</option>
+              <option value="carrosserie">Carrosserie</option>
+            </select>
+          </div>
+          <div class="estimator-field">
+            <label for="estimatorSize">Gabarit du véhicule</label>
+            <select id="estimatorSize">
+              <option value="citadine">Citadine</option>
+              <option value="berline">Berline / Compacte</option>
+              <option value="suv">SUV / Utilitaire</option>
+            </select>
+          </div>
+          <div class="estimator-result" aria-live="polite">
+            <span class="estimator-result-label">Fourchette indicative</span>
+            <span class="estimator-result-value" id="estimatorValue">69 &euro; &ndash; 79 &euro;</span>
+          </div>
+        </div>
+        <p class="estimator-note">Estimation indicative hors pièces spécifiques ou options. Un devis précis et gratuit vous est toujours proposé avant intervention.</p>
+      </div>
+    </section>
+
     <section id="a-propos" class="section a-propos">
       <div class="container a-propos-inner">
         <div class="a-propos-visual reveal reveal-pop">
@@ -261,6 +325,31 @@
             </div>
           </div>
           <a href="histoire.html" class="see-more-link">Découvrir l'histoire du garage &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pourquoi" class="section why">
+      <div class="container">
+        <p class="eyebrow center">Nos engagements</p>
+        <h2 class="why-heading">Pourquoi nous choisir</h2>
+        <div class="why-grid">
+          <div class="why-item reveal">
+            <h3>Transparence des prix</h3>
+            <p>Devis détaillé avant toute intervention. Aucun coût caché, aucune surprise à la facture.</p>
+          </div>
+          <div class="why-item reveal">
+            <h3>Garage de quartier</h3>
+            <p>Une entreprise familiale, pas une chaîne : vous parlez toujours au mécanicien qui répare votre véhicule.</p>
+          </div>
+          <div class="why-item reveal">
+            <h3>Rendez-vous rapide</h3>
+            <p>La plupart des créneaux sont disponibles sous 48h, hors interventions carrosserie complexes.</p>
+          </div>
+          <div class="why-item reveal">
+            <h3>Pièces et main d'œuvre garanties</h3>
+            <p>Toutes nos interventions sont garanties, avec des pièces conformes ou d'origine selon votre choix.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -388,6 +477,7 @@
               <tr><th scope="row">Dimanche</th><td>Fermé</td></tr>
             </tbody>
           </table>
+          <p class="hours-status" id="hoursStatus" aria-live="polite"></p>
           <address>
             12 Rue de la République<br>
             69003 Lyon
@@ -524,6 +614,10 @@
       <div class="form-field">
         <label for="phone-modal">Téléphone</label>
         <input type="tel" id="phone-modal" name="phone" required autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="vehicle-modal">Votre véhicule</label>
+        <input type="text" id="vehicle-modal" name="vehicle" placeholder="Ex : Peugeot 208, 2018" autocomplete="off">
       </div>
       <div class="form-field">
         <label for="date-modal">Date souhaitée</label>

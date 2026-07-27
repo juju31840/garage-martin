@@ -49,7 +49,7 @@
   --color-ink: #1c1712;
   --color-border: #ddd2ba;
   --radius: 4px;
-  --max-width: 1140px;
+  --max-width: 860px;
   --font-display: "Big Shoulders Display", "Arial Narrow", Arial, sans-serif;
   --font-base: "Work Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", "Courier New", monospace;
@@ -786,6 +786,199 @@ p {
   }
 }
 
+/* ---------- Comment ça se passe ---------- */
+.steps-heading {
+  text-align: center;
+  max-width: 26ch;
+  margin: 0.5rem auto 0;
+}
+
+.steps-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 700px) {
+  .steps-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .steps-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.step {
+  position: relative;
+  padding-left: 3.25rem;
+  min-height: 2.1rem;
+}
+
+.step-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex: none;
+}
+
+.step h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  text-transform: none;
+  color: var(--color-primary);
+}
+
+.step p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ---------- Estimateur de prix ---------- */
+.estimator-heading {
+  text-align: center;
+  max-width: 26ch;
+  margin: 0.5rem auto 0;
+}
+
+.estimator .section-intro {
+  text-align: center;
+  margin: 0.75rem auto 0;
+}
+
+.estimator-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 30rem;
+  margin: 2.5rem auto 0;
+  padding: 1.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+.estimator-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.estimator-field label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.estimator-field select {
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+}
+
+.estimator-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.1rem;
+  background: var(--color-bg);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.estimator-result-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.estimator-result-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.7rem;
+  color: var(--color-primary);
+}
+
+.estimator-note {
+  max-width: 30rem;
+  margin: 1rem auto 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Pourquoi nous choisir ---------- */
+.why-heading {
+  text-align: center;
+  max-width: 26ch;
+  margin: 0.5rem auto 0;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 700px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .why-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.why-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.why-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  text-transform: none;
+  color: var(--color-primary);
+}
+
+.why-item p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
 /* ---------- A propos ---------- */
 .a-propos {
   background: var(--color-surface);
@@ -1115,6 +1308,51 @@ p {
   color: var(--color-primary);
   font-weight: 700;
   padding-right: 1rem;
+}
+
+.hours-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: -0.5rem 0 1.25rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: var(--color-bg);
+}
+
+.hours-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.hours-status.is-open {
+  color: #2f6b3c;
+}
+
+.hours-status.is-open::before {
+  background: #2f6b3c;
+}
+
+.hours-status.is-closing-soon {
+  color: var(--color-accent-dark);
+}
+
+.hours-status.is-closing-soon::before {
+  background: var(--color-accent-dark);
+}
+
+.hours-status.is-closed {
+  color: var(--color-text-muted);
+}
+
+.hours-status.is-closed::before {
+  background: var(--color-text-muted);
 }
 
 address {
@@ -1846,6 +2084,20 @@ address {
   font-size: 0.8rem;
   color: var(--color-text-muted);
   margin: 0 0 1.25rem;
+}
+
+.price-compare {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  margin: 0 0 1.25rem;
+}
+
+.price-compare strong {
+  color: var(--color-primary);
 }
 
 .prestation-related {

@@ -361,4 +361,89 @@
       { passive: true }
     );
   }
+
+  var hoursStatus = document.getElementById("hoursStatus");
+  if (hoursStatus) {
+    var now = new Date();
+    var day = now.getDay();
+    var minutes = now.getHours() * 60 + now.getMinutes();
+
+    var fmtHour = function (mins) {
+      var h = Math.floor(mins / 60);
+      var m = mins % 60;
+      return h + "h" + (m ? (m < 10 ? "0" + m : m) : "");
+    };
+
+    var ranges = [];
+    if (day >= 1 && day <= 5) {
+      ranges = [
+        [480, 720],
+        [840, 1110],
+      ];
+    } else if (day === 6) {
+      ranges = [[480, 720]];
+    }
+
+    var state = "closed";
+    var label = "Fermé actuellement";
+
+    for (var i = 0; i < ranges.length; i++) {
+      var start = ranges[i][0];
+      var end = ranges[i][1];
+      if (minutes >= start && minutes < end) {
+        if (end - minutes <= 30) {
+          state = "closing-soon";
+          label = "Ferme dans " + (end - minutes) + " min";
+        } else {
+          state = "open";
+          label = "Ouvert actuellement";
+        }
+        break;
+      }
+      if (minutes < start) {
+        label = "Fermé — ouvre à " + fmtHour(start);
+        break;
+      }
+    }
+
+    hoursStatus.textContent = label;
+    hoursStatus.classList.add("is-" + state);
+  }
+
+  var estimatorService = document.getElementById("estimatorService");
+  var estimatorSize = document.getElementById("estimatorSize");
+  var estimatorValue = document.getElementById("estimatorValue");
+
+  if (estimatorService && estimatorSize && estimatorValue) {
+    var estimatorPrices = {
+      vidange: { citadine: [69, 69], berline: [69, 79], suv: [89, 99] },
+      revision: { citadine: [149, 149], berline: [149, 169], suv: [199, 219] },
+      pneus: { citadine: [20, 20], berline: [20, 25], suv: [30, 35] },
+      diagnostic: { citadine: [49, 49], berline: [49, 49], suv: [49, 59] },
+      freinage: { citadine: [89, 89], berline: [89, 109], suv: [119, 139] },
+    };
+
+    var updateEstimator = function () {
+      var service = estimatorService.value;
+      var size = estimatorSize.value;
+
+      if (service === "carrosserie") {
+        estimatorValue.textContent = "Devis gratuit sous 24h";
+        return;
+      }
+
+      var range = estimatorPrices[service] && estimatorPrices[service][size];
+      if (!range) return;
+
+      if (range[0] === range[1]) {
+        estimatorValue.textContent = range[0] + " €";
+      } else {
+        estimatorValue.textContent = range[0] + " € – " + range[1] + " €";
+      }
+    };
+
+    estimatorService.addEventListener("change", updateEstimator);
+    estimatorSize.addEventListener("change", updateEstimator);
+    updateEstimator();
+  }
 })();
