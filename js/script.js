@@ -159,6 +159,48 @@
     });
   }
 
+  var galleryContainer = document.querySelector("[data-gallery]");
+  var lightbox = document.getElementById("lightbox");
+  if (galleryContainer && lightbox) {
+    var galleryItems = Array.prototype.slice.call(galleryContainer.querySelectorAll(".gallery-item"));
+    var lightboxImage = document.getElementById("lightboxImage");
+    var lightboxCaption = document.getElementById("lightboxCaption");
+    var lightboxIndex = 0;
+
+    function showLightboxIndex(index) {
+      lightboxIndex = (index + galleryItems.length) % galleryItems.length;
+      var item = galleryItems[lightboxIndex];
+      var img = item.querySelector("img");
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightboxCaption.textContent = item.getAttribute("data-caption") || img.alt;
+    }
+
+    galleryItems.forEach(function (item, index) {
+      item.addEventListener("click", function () {
+        showLightboxIndex(index);
+        lightbox.showModal();
+      });
+    });
+
+    var lightboxPrev = lightbox.querySelector("[data-lightbox-prev]");
+    var lightboxNext = lightbox.querySelector("[data-lightbox-next]");
+    var lightboxClose = lightbox.querySelector("[data-lightbox-close]");
+
+    if (lightboxPrev) lightboxPrev.addEventListener("click", function () { showLightboxIndex(lightboxIndex - 1); });
+    if (lightboxNext) lightboxNext.addEventListener("click", function () { showLightboxIndex(lightboxIndex + 1); });
+    if (lightboxClose) lightboxClose.addEventListener("click", function () { lightbox.close(); });
+
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) lightbox.close();
+    });
+
+    lightbox.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") showLightboxIndex(lightboxIndex - 1);
+      if (event.key === "ArrowRight") showLightboxIndex(lightboxIndex + 1);
+    });
+  }
+
   if (!prefersReducedMotion && "IntersectionObserver" in window) {
     var revealObserver = new IntersectionObserver(
       function (entries) {
