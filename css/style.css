@@ -1561,6 +1561,7 @@ address {
   width: 16px;
   height: 16px;
   flex: none;
+  fill: var(--color-accent-on-dark);
 }
 
 .footer-phone:hover,
@@ -1617,6 +1618,7 @@ address {
   width: 18px;
   height: 18px;
   flex: none;
+  fill: var(--color-accent-on-dark);
 }
 
 .footer-social-link:hover,
