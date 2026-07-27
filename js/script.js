@@ -446,4 +446,67 @@
     estimatorSize.addEventListener("change", updateEstimator);
     updateEstimator();
   }
+
+  var CRISP_CONSENT_KEY = "gm_chat_consent";
+
+  function loadCrisp() {
+    if (window.$crisp) return;
+    window.$crisp = [];
+    // À remplacer par votre identifiant Crisp réel (crisp.chat -> Settings -> Website ID)
+    window.CRISP_WEBSITE_ID = "VOTRE-ID-CRISP";
+    var script = document.createElement("script");
+    script.src = "https://client.crisp.chat/l.js";
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  function getCookieConsent() {
+    try {
+      return localStorage.getItem(CRISP_CONSENT_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setCookieConsent(value) {
+    try {
+      localStorage.setItem(CRISP_CONSENT_KEY, value);
+    } catch (e) {
+      /* localStorage indisponible (navigation privée...) : le bandeau réapparaîtra, sans bloquer le site */
+    }
+  }
+
+  var cookieBanner = document.getElementById("cookieBanner");
+  if (cookieBanner) {
+    var acceptBtn = cookieBanner.querySelector("[data-cookie-accept]");
+    var declineBtn = cookieBanner.querySelector("[data-cookie-decline]");
+    var consent = getCookieConsent();
+
+    if (consent === "accepted") {
+      loadCrisp();
+    } else if (consent !== "declined") {
+      cookieBanner.classList.add("is-visible");
+    }
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener("click", function () {
+        setCookieConsent("accepted");
+        cookieBanner.classList.remove("is-visible");
+        loadCrisp();
+      });
+    }
+
+    if (declineBtn) {
+      declineBtn.addEventListener("click", function () {
+        setCookieConsent("declined");
+        cookieBanner.classList.remove("is-visible");
+      });
+    }
+  }
+
+  document.querySelectorAll("[data-cookie-manage]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (cookieBanner) cookieBanner.classList.add("is-visible");
+    });
+  });
 })();
