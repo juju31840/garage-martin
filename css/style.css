@@ -305,6 +305,9 @@ p {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-display);
   color: #fff;
   font-size: 1.4rem;
@@ -316,6 +319,12 @@ p {
 
 .logo span {
   color: var(--color-accent);
+}
+
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
 }
 
 .header-call {
@@ -1530,6 +1539,11 @@ address {
 
 .footer-brand .logo {
   margin: 0 0 0.6rem;
+}
+
+.footer-brand .logo-icon {
+  width: 26px;
+  height: 26px;
 }
 
 .footer-tagline {
