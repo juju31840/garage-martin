@@ -11,7 +11,7 @@ donner envie d'appeler/prendre RDV, rassurer sur le sérieux de l'artisan. Brief
 `brief.md`. Le site a ensuite évolué vers un site multi-pages selon `brief-v2.md` (prestations
 tarifées, avis, atelier) — les deux briefs restent la référence sur l'intention produit.
 
-## État réel du site (au 29/07/2026)
+## État actuel (vérifié dans le code le 29/07/2026)
 
 **100% vanilla HTML/CSS/JS, aucun framework, aucun serveur requis.** Contrairement aux projets Next.js
 de l'utilisateur, ce site s'ouvre directement en double-cliquant sur un fichier `.html` — le header
@@ -66,10 +66,6 @@ légales, politique de confidentialité, 404), 33 commits, tout poussé sur `mai
   deux derniers skills ont été rendus autonomes (copiés depuis `world-clock`, qui était ouvert en
   parallèle) pour fonctionner en clonant uniquement ce dépôt.
 
-## Prochaines actions probables
+## Prochaine action
 
-1. Ouvrir les pages en local (double-clic ou `visual-check`) pour reconfirmer visuellement l'état
-   avant toute nouvelle demande — ce projet n'a pas les mêmes limitations que Vibetrip, il est
-   testable immédiatement.
-2. Si mise en ligne envisagée : lever les deux points d'attention ci-dessus (vrais tarifs, vrais
-   avis) en priorité — ce sont les seuls éléments factuellement "faux" restants dans le site.
+Aucune prévue : projet mis de côté le 11/10/2026. Avant toute mise en ligne, remplacer les faux tarifs et les faux avis (voir « Points d'attention »), seuls éléments factuellement faux du site. Pour reconfirmer l'état : ouvrir les pages en local (skill `visual-check`).
